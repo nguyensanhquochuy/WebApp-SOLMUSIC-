@@ -1,0 +1,50 @@
+﻿@model ch_nhac_cu.Models.LoaiNhacCu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+    String anhLNC = @Model.AnhLoaiNC;
+}
+
+<div class="page-header ">
+    <div class="row align-items-center justify-content-center >
+        <div class="col ">
+            <h3 class="page-title">Chi tiết loại nhạc cụ</h3>
+        </div>
+
+    </div>
+
+    <div class="card mb-0">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="profile-view">
+                        <div class="profile-img-wrap" style="top: -18px;height:95px">
+                            <div class="profile-img">
+                                <a href="">
+                                    <img src='/Content/assets/img/LoaiNC/@Model.AnhLoaiNC' alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="profile-basic">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="profile-info-left">
+                                        <div class="staff-id"> @Html.DisplayNameFor(model => model.MaLoaiNC): @Model.MaLoaiNC</div>
+                                        <div class="staff-id"> &nbsp;</div>
+                                        <div class="staff-id"> @Html.DisplayNameFor(model => model.TenLoaiNC): @Model.TenLoaiNC</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="submit-section">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaLoaiNC }, new { @class = "btn btn-success submit-btn" }) &nbsp;
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary submit-btn m-r-10" })
+    </div>
+</div>

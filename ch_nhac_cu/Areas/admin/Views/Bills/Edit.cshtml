@@ -1,0 +1,52 @@
+﻿@model ch_nhac_cu.Models.HoaDon
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.MaHD)
+    @if (Model.TinhTrangDuyet == false)
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayGH, "Cập nhật ngày giao hàng", htmlAttributes: new { @class = "control-label col-md-4 h3" })
+            <div class="col-sm-4 col-md-4">
+                @Html.EditorFor(model => model.NgayGH, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.NgayGH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="submit-section">
+            <input type="submit" value="Save" class="btn btn-success submit-btn" />&nbsp;
+            @Html.ActionLink("Back to List", "HoaDonChuaDuyet", null, new { @class = "btn btn-secondary submit-btn m-r-10" })
+        </div>
+
+    }
+    else
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.TinhTrangDonHang, "Cập nhật tình trạng đơn hàng", htmlAttributes: new { @class = "control-label col-md-4 h3" })
+            <div class="col-sm-4 col-md-4">
+                @Html.DropDownListFor(model => model.TinhTrangDonHang, new SelectList(new Dictionary<string, bool> { { "Thất bại", false }, { "Thành công", true } }, "Value", "Key"), "Chọn tình trạng", new { @class = "form-control select" })
+                @Html.ValidationMessageFor(model => model.TinhTrangDonHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="submit-section">
+            <input type="submit" value="Save" class="btn btn-success submit-btn" />&nbsp;
+            @Html.ActionLink("Back to List", "HoaDonDaDuyet", null, new { @class = "btn btn-secondary submit-btn m-r-10" })
+        </div>
+
+    }
+
+
+</div>
+}
+
+

@@ -1,0 +1,75 @@
+﻿@model ch_nhac_cu.Models.NhaCungCap
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="page-header ">
+    <div class="row align-items-center justify-content-center >
+        <div class="col">
+            <h3 class="page-title" style="color:red">Bạn có thực sự muốn xóa?</h3>
+        </div>
+
+    </div>
+    <div>
+
+        <div class="card mb-0">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="profile-view">
+                            <!--<div class="profile-img-wrap">
+                            <div class="profile-img">-->
+                            @*<a href="">
+                                    <img src="assets/img/profiles/avatar-19.jpg" alt="">
+                                </a>*@
+                            <!--</div>
+                            </div>-->
+                            <div class="profile-basic">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="profile-info-left">
+                                            <h3 class="user-name m-t-0">@Model.TenNCC</h3>
+                                            <div class="staff-id">&nbsp;</div>
+                                            <div class="staff-id"> @Html.DisplayNameFor(model => model.MaNCC): @Model.MaNCC</div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <ul class="personal-info">
+                                            <li>
+                                                <span class="title">@Html.DisplayNameFor(model => model.SDT)</span>
+                                                <span class="text"><a href="">@Model.SDT</a></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">@Html.DisplayNameFor(model => model.Email):</span>
+                                                <span class="text"><a href="">@Model.Email</a></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">@Html.DisplayNameFor(model => model.DiaChi):</span>
+                                                <span class="text">@Model.DiaChi</span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="submit-section">
+                <input type="submit" value="Delete" class="btn btn-success submit-btn" />&nbsp;
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary submit-btn m-r-10" })
+            </div>
+        }
+    </div>
+</div>
